@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="siteTitle">المنصة الرسمية للأستاذ إسماعيل بن محمد</title>
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --main-font: 'Cairo', sans-serif;
+            --bg-color: #07090e;
+            --card-bg: rgba(15, 23, 42, 0.9);
+            --card-border: rgba(56, 189, 248, 0.2);
+            --primary-accent: #38bdf8;
+            --gold-accent: #fbbf24;
+            --text-color: #f8fafc;
+            --text-secondary: #94a3b8;
+            --whatsapp-color: #25d366;
+            --blur-bg: blur(20px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--main-font); transition: all 0.2s ease-in-out; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding-bottom: 4rem; overflow-x: hidden; }
+
+        .container { max-width: 1150px; margin: 0 auto; padding: 0 0.8rem; }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--card-border), var(--gold-accent), var(--card-border), transparent);
+            margin: 2rem 0;
+            border: none;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: var(--blur-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 1.2rem; margin-top: 0.8rem; border-radius: 20px;
+            background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.95));
+            border: 1px solid var(--gold-accent);
+        }
+        .logo { font-weight: 900; font-size: 1.1rem; color: var(--gold-accent); text-shadow: 0 0 10px rgba(251,191,36,0.3); }
+        .admin-nav-btn {
+            background: linear-gradient(135deg, var(--gold-accent), #f59e0b); border: none;
+            color: #000; padding: 0.5rem 1.1rem; border-radius: 30px; cursor: pointer; font-weight: bold; font-size: 0.85rem;
+        }
+
+        #mainSitePage { display: block; }
+        #adminPage { display: none; }
+
+        .profile-section { text-align: center; padding: 1.2rem 0.8rem; }
+        .profile-img-box {
+            position: relative; width: 170px; height: 170px; margin: 0 auto 0.8rem auto;
+            border-radius: 50%; padding: 4px; background: linear-gradient(135deg, var(--gold-accent), var(--primary-accent));
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+        }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: #1e293b; }
+        .profile-name { font-size: 1.5rem; font-weight: 900; color: #fff; margin-bottom: 0.2rem; }
+        .profile-title { color: var(--gold-accent); font-weight: 700; font-size: 0.95rem; }
+        .profile-grades { color: var(--primary-accent); font-weight: 600; font-size: 0.85rem; margin-top: 0.1rem; }
+        .profile-bio { color: var(--text-secondary); margin-top: 0.4rem; font-size: 0.85rem; max-width: 800px; margin-inline: auto; }
+
+        .social-bar { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.8rem; }
+        .social-pill {
+            display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 1rem;
+            border-radius: 30px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border);
+            color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem;
+        }
+
+        .section-header {
+            font-size: 1.2rem; font-weight: 800; margin: 1.2rem 0 0.8rem 0;
+            display: flex; align-items: center; gap: 0.5rem; color: #fff; border-right: 4px solid var(--gold-accent); padding-right: 0.6rem;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .grid-general {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+        }
+
+        .store-card {
+            background: rgba(15, 23, 42, 0.9); border: 1px solid var(--card-border); border-radius: 14px;
+            overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .store-img-wrapper {
+            width: 100%; height: 160px; background: #0b0f19; display: flex; align-items: center; justify-content: center;
+            padding: 0.3rem; border-bottom: 1px solid var(--card-border);
+        }
+        .store-card-img { width: 100%; height: 100%; object-fit: contain; }
+        .store-card-body { padding: 0.7rem; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+        .grade-badge {
+            display: inline-block; background: rgba(251, 191, 36, 0.15); color: var(--gold-accent);
+            padding: 0.2rem 0.5rem; border-radius: 6px; font-weight: bold; font-size: 0.75rem; margin-bottom: 0.3rem;
+        }
+        .buy-btn {
+            width: 100%; background: var(--whatsapp-color); color: #fff; border: none;
+            padding: 0.6rem; border-radius: 8px; font-weight: bold; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 0.6rem; font-size: 0.85rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: none;
+            justify-content: center; align-items: center; z-index: 1000; padding: 1rem;
+        }
+        .modal-box { width: 100%; max-width: 440px; text-align: right; border: 1px solid var(--gold-accent); }
+        .form-group-modal { margin-bottom: 0.7rem; }
+        .form-group-modal label { display: block; margin-bottom: 0.2rem; font-size: 0.8rem; font-weight: bold; color: var(--gold-accent); }
+        .form-group-modal input, .form-group-modal select {
+            width: 100%; padding: 0.6rem; background: #1e293b; border: 1px solid var(--card-border);
+            border-radius: 8px; color: #fff; font-size: 0.85rem; outline: none;
+        }
+
+        .admin-page-box { background: #0f172a; border: 2px solid var(--gold-accent); border-radius: 20px; padding: 1.2rem; margin-top: 1rem; }
+        .form-group { margin-bottom: 0.8rem; text-align: right; }
+        .form-group label { display: block; margin-bottom: 0.2rem; font-weight: bold; font-size: 0.8rem; color: #cbd5e1; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 0.65rem; background: #1e293b; border: 1px solid var(--card-border);
+            border-radius: 8px; color: #fff; font-size: 0.85rem; outline: none;
+        }
+        .upload-card {
+            background: rgba(56, 189, 248, 0.05); padding: 0.8rem; border-radius: 10px;
+            border: 1px dashed var(--primary-accent); margin-bottom: 0.8rem; text-align: center;
+        }
+        .file-btn {
+            display: inline-block; background: #8b5cf6; color: #fff; padding: 0.5rem 1rem;
+            border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 0.3rem; font-size: 0.8rem;
+        }
+        .btn-action {
+            background: var(--primary-accent); color: #000; border: none; padding: 0.7rem;
+            border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 0.9rem;
+        }
+        .btn-edit { background: #f59e0b; padding: 0.3rem 0.6rem; font-size: 0.75rem; border: none; border-radius: 6px; color: #000; font-weight:bold; cursor: pointer; margin-left: 0.3rem; }
+        .btn-danger { background: #ef4444; padding: 0.3rem 0.6rem; font-size: 0.75rem; border: none; border-radius: 6px; color: #fff; cursor: pointer; }
+        .list-row { display: flex; justify-content: space-between; align-items: center; background: #1e293b; padding: 0.6rem; border-radius: 8px; margin-bottom: 0.4rem; }
+        
+        .video-box video { width: 100%; height: 200px; border-radius: 10px; background: #000; }
+
+        .global-admin-btns {
+            margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;
+        }
+        .btn-save-all { background: linear-gradient(135deg, #10b981, #059669); color: #fff; font-size: 1rem; padding: 0.9rem; border-radius: 10px; border: none; font-weight: bold; cursor: pointer; }
+        .btn-clear-all { background: linear-gradient(135deg, #ef4444, #b91c1c); color: #fff; font-size: 0.9rem; padding: 0.7rem; border-radius: 10px; border: none; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- PAGE 1: PUBLIC SITE -->
+        <div id="mainSitePage">
+            <!-- Nav -->
+            <nav class="glass-card">
+                <div class="logo" id="navLogoText">منصة الأستاذ إسماعيل بن محمد</div>
+                <button class="admin-nav-btn" onclick="openLoginModal()"><i class="fas fa-lock"></i> لوحة الأدمن</button>
+            </nav>
+
+            <!-- Profile Section -->
+            <header class="glass-card profile-section">
+                <div class="profile-img-box">
+                    <img src="https://via.placeholder.com/180" alt="صورة الأستاذ" class="profile-img" id="profImg">
+                </div>
+                <h1 class="profile-name" id="profName">الأستاذ / إسماعيل بن محمد</h1>
+                <p class="profile-title" id="profTitle">معلم اللغة العربية للمرحلتين الإعدادية والثانوية الأزهرية</p>
+                <p class="profile-grades" id="profGrades"><i class="fas fa-graduation-cap"></i> الصفوف الدراسية: المرحلة الإعدادية والثانوية الأزهرية</p>
+                <p class="profile-bio" id="profBio">طريقك للتميز في المواد العربية بالأزهر الشريف | من الفهم إلى الإتقان</p>
+
+                <div class="social-bar" id="phonesBar"></div>
+            </header>
+
+            <hr class="section-divider">
+
+            <!-- Direct Links Section -->
+            <h2 class="section-header"><i class="fas fa-link"></i> اللينكات المباشرة وقنوات التواصل</h2>
+            <div class="grid-general" id="groupsGrid"></div>
+
+            <hr class="section-divider">
+
+            <!-- Fixed Subjects Section -->
+            <h2 class="section-header"><i class="fas fa-book-reader"></i> المواد الدراسية والتخصصات</h2>
+            <div class="grid-general" id="subjectsGrid"></div>
+
+            <hr class="section-divider">
+
+            <!-- Hadith & Wisdom -->
+            <h2 class="section-header"><i class="fas fa-kaaba"></i> الأحاديث الشريفة والحكم</h2>
+            <div class="glass-card">
+                <p style="color: var(--gold-accent); font-weight: bold; font-size: 0.8rem;">حديث شريف:</p>
+                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.1rem;" id="hadithText">«مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا، سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ»</p>
+            </div>
+            <div class="glass-card" style="border-right: 4px solid var(--primary-accent);">
+                <p style="color: var(--primary-accent); font-weight: bold; font-size: 0.8rem;">حكمة اليوم:</p>
+                <p style="font-size: 0.95rem; font-weight: 600; margin-top: 0.1rem;" id="wisdomText">«العزيمة والسيطرة الاستمرار، والتوكل على الله، الوصول إلى ما تسعى إليه.»</p>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Locations Section -->
+            <h2 class="section-header"><i class="fas fa-map-marker-alt"></i> أماكن الحضور والدروس</h2>
+            <div class="grid-general">
+                <div class="glass-card" style="border-top: 3px solid var(--primary-accent);">
+                    <div style="color:var(--primary-accent); font-weight:bold; margin-bottom:0.3rem;"><i class="fas fa-building"></i> في السنتر:</div>
+                    <p style="font-size:0.9rem;">شارع شلتوت بعد كافية صدام [ بجوار الأستاذ تامر دياب ] - ميت العز كبري السنترال.</p>
+                </div>
+                <div class="glass-card" style="border-top: 3px solid var(--gold-accent);">
+                    <div style="color:var(--gold-accent); font-weight:bold; margin-bottom:0.3rem;"><i class="fas fa-laptop-house"></i> أونلاين:</div>
+                    <p style="font-size:0.9rem;">مباشر عبر برنامج زوم (Zoom) وجوجل ميت (Google Meet).</p>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Store Notes (Always 2 Per Row) -->
+            <h2 class="section-header"><i class="fas fa-store"></i> متجر المذكرات والكتب الرسمية</h2>
+            <div class="notes-grid" id="notesGrid"></div>
+
+            <hr class="section-divider">
+
+            <!-- Videos Section -->
+            <h2 class="section-header"><i class="fas fa-video"></i> معارض الفيديوهات والشروحات</h2>
+            <div class="grid-general" id="videosGrid"></div>
+        </div>
+
+        <!-- PAGE 2: ADMIN PAGE -->
+        <div id="adminPage">
+            <div class="admin-page-box">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; border-bottom:1px solid var(--card-border); padding-bottom:0.8rem;">
+                    <h2 style="color:var(--gold-accent); font-size:1.2rem;"><i class="fas fa-sliders-h"></i> لوحة تحكم الأدمن (Admin)</h2>
+                    <button onclick="goToMainSite()" class="admin-nav-btn"><i class="fas fa-arrow-right"></i> الرجوع للموقع</button>
+                </div>
+
+                <!-- Password Settings -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">🔐 إعدادات كلمة السر:</h3>
+                <div class="form-group"><label>تغيير كلمة سر الأستاذ:</label><input type="password" id="newTeacherPass" placeholder="كلمة السر الجديدة للأستاذ (الافتراضية: 1111)"></div>
+                <button class="btn-action" style="margin-bottom:1.5rem; background:#f59e0b;" onclick="updateTeacherPassword()">تحديث كلمة السر للأستاذ 🔑</button>
+
+                <hr class="section-divider">
+
+                <!-- 1. Profile Data -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">1. صورة البروفايل وبيانات الأستاذ:</h3>
+                <div class="upload-card">
+                    <label style="color:var(--gold-accent); font-weight:bold;"><i class="fas fa-image"></i> رفع صورة البروفايل أونلاين:</label><br>
+                    <label class="file-btn">
+                        اختيار صورة شخصية
+                        <input type="file" id="localImgFile" accept="image/*" onchange="uploadProfileImageOnline(event)" style="display:none;">
+                    </label>
+                    <p id="profStatus" style="color:var(--whatsapp-color); margin-top:0.3rem; font-size:0.8rem; font-weight:bold;"></p>
+                </div>
+                <div class="form-group"><label>اسم المنصة:</label><input type="text" id="siteNameInput"></div>
+                <div class="form-group"><label>اسم الأستاذ:</label><input type="text" id="profNameInput"></div>
+                <div class="form-group"><label>التخصص:</label><input type="text" id="profTitleInput"></div>
+                <div class="form-group"><label>الصفوف الدراسية:</label><input type="text" id="profGradesInput"></div>
+                <div class="form-group"><label>السيرة الذاتية (Bio):</label><textarea id="profBioInput" rows="2"></textarea></div>
+
+                <hr class="section-divider">
+
+                <!-- 2. Fixed Subjects Description Edit -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">2. تعديل وصف المواد الدراسية الثابتة:</h3>
+                <div class="form-group"><label>وصف الصرف:</label><textarea id="descSarf" rows="2"></textarea></div>
+                <div class="form-group"><label>وصف النحو:</label><textarea id="descNahw" rows="2"></textarea></div>
+                <div class="form-group"><label>وصف البلاغة:</label><textarea id="descBalagha" rows="2"></textarea></div>
+                <div class="form-group"><label>وصف الأدب والنصوص:</label><textarea id="descAdab" rows="2"></textarea></div>
+
+                <hr class="section-divider">
+
+                <!-- 3. Store Notes -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">3. إدارة المذكرات المتوفرة (إضافة وتعديل وحذف):</h3>
+                <input type="hidden" id="editingNoteIndex" value="-1">
+                <div class="form-group"><label>اسم المذكرة:</label><input type="text" id="noteTitleIn"></div>
+                <div class="form-group"><label>الصف الدراسي:</label><input type="text" id="noteGradeIn" placeholder="مثال: الصف الثالث الثانوي الأزهري"></div>
+                <div class="upload-card">
+                    <label style="color:var(--gold-accent); font-weight:bold;"><i class="fas fa-file-image"></i> رفع/تغيير غلاف المذكرة أونلاين:</label><br>
+                    <label class="file-btn">
+                        اختر الغلاف
+                        <input type="file" accept="image/*" id="noteImgFile" onchange="uploadNoteImgOnline(event)" style="display:none;">
+                    </label>
+                    <p id="noteFileStatus" style="color:var(--whatsapp-color); margin-top:0.3rem; font-size:0.8rem; font-weight:bold;"></p>
+                </div>
+                <button class="btn-action" id="saveNoteBtn" onclick="addOrUpdateNote()">حفظ المذكرة للقائمة 🚀</button>
+                <div id="notesListAdmin" style="margin-top:0.8rem;"></div>
+
+                <hr class="section-divider">
+
+                <!-- 4. Direct Links -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">4. إدارة اللينكات المباشرة والجروبات:</h3>
+                <input type="hidden" id="editingGroupIndex" value="-1">
+                <div class="form-group"><label>اسم اللينك:</label><input type="text" id="groupNameIn"></div>
+                <div class="form-group"><label>الرابط (Link):</label><input type="text" id="groupLinkIn" placeholder="https://..."></div>
+                <button class="btn-action" id="saveGroupBtn" onclick="addOrUpdateGroup()">حفظ اللينك 🔗</button>
+                <div id="groupsListAdmin" style="margin-top:0.8rem;"></div>
+
+                <hr class="section-divider">
+
+                <!-- 5. Videos -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">5. رفع وإدارة الشروحات والفيديوهات:</h3>
+                <input type="hidden" id="editingVideoIndex" value="-1">
+                <div class="form-group"><label>عنوان الفيديو:</label><input type="text" id="vidTitleIn"></div>
+                <div class="upload-card">
+                    <label style="color:var(--gold-accent); font-weight:bold;"><i class="fas fa-video"></i> اختر فيديو من جهازك:</label><br>
+                    <label class="file-btn" style="background:#059669;">
+                        رفع الفيديو أونلاين
+                        <input type="file" accept="video/*" id="vidFileIn" onchange="uploadVideoOnline(event)" style="display:none;">
+                    </label>
+                    <p id="vidFileStatus" style="color:var(--whatsapp-color); margin-top:0.3rem; font-size:0.8rem; font-weight:bold;"></p>
+                </div>
+                <button class="btn-action" id="saveVidBtn" onclick="addOrUpdateVideo()">حفظ الفيديو 🎬</button>
+                <div id="videosListAdmin" style="margin-top:0.8rem;"></div>
+
+                <hr class="section-divider">
+
+                <!-- 6. Phones -->
+                <h3 style="color:var(--primary-accent); margin-bottom:0.6rem;">6. إضافة رقم واتساب:</h3>
+                <div class="form-group"><label>رقم التليفون:</label><input type="text" id="phoneIn" placeholder="01158081761"></div>
+                <button class="btn-action" onclick="addPhone()">إضافة الرقم 📱</button>
+                <div id="phonesListAdmin" style="margin-top:0.8rem;"></div>
+
+                <div class="global-admin-btns">
+                    <button class="btn-save-all" onclick="saveAllSiteData()">💾 حفظ ونشر جميع التعديلات أونلاين</button>
+                    <button class="btn-clear-all" onclick="resetSiteData()">🔄 استرجاع الإعدادات الافتراضية</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="glass-card modal-box">
+            <h3 style="color:var(--gold-accent); margin-bottom:0.8rem;"><i class="fas fa-lock"></i> تسجيل دخول الأدمن</h3>
+            <div class="form-group-modal">
+                <label>كلمة السر:</label>
+                <input type="password" id="adminPassInput" placeholder="أدخل كلمة السر">
+            </div>
+            <button class="btn-action" onclick="verifyAdminLogin()">دخول لوحة التحكم</button>
+            <button class="btn-action" style="background:#475569; margin-top:0.4rem;" onclick="closeLoginModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Note Order Form Modal -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="glass-card modal-box">
+            <h3 style="color:var(--gold-accent); margin-bottom:0.8rem; text-align:center;"><i class="fas fa-shopping-cart"></i> طلب مذكرة</h3>
+            <p style="font-size:0.85rem; color:var(--primary-accent); margin-bottom:0.8rem; text-align:center;" id="modalNoteTitleDisplay"></p>
+            
+            <div class="form-group-modal">
+                <label>أنت (معلم أم طالب؟):</label>
+                <select id="orderRole">
+                    <option value="طالب">طالب</option>
+                    <option value="معلم">معلم</option>
+                </select>
+            </div>
+            <div class="form-group-modal">
+                <label>الاسم الكامل:</label>
+                <input type="text" id="orderName" placeholder="اكتب اسمك هنا">
+            </div>
+            <div class="form-group-modal">
+                <label>المحافظة:</label>
+                <input type="text" id="orderCity" placeholder="مثال: الدقهلية">
+            </div>
+            <div class="form-group-modal">
+                <label>الصف الدراسي:</label>
+                <input type="text" id="orderGrade" placeholder="مثال: الصف الثالث الثانوي">
+            </div>
+            <div class="form-group-modal">
+                <label>النوع (أزهري أم عام؟):</label>
+                <select id="orderType">
+                    <option value="أزهري">أزهري</option>
+                    <option value="عام">عام</option>
+                </select>
+            </div>
+
+            <button class="btn-action" style="background:var(--whatsapp-color); color:#fff; margin-top:0.5rem;" onclick="sendOrderToWhatsapp()"><i class="fab faإعلام fa-whatsapp"></i> إرسال الطلب عبر الواتساب</button>
+            <button class="btn-action" style="background:#475569; margin-top:0.4rem;" onclick="closeOrderModal()">إلغاء</button>
+        </div>
+    </div>
+
+    <script>
+        const CLOUD_NAME = "pneaavyp";
+        const UPLOAD_PRESET = "bmuckpiy";
+        const STORAGE_KEY = "ismael_site_data_v3";
+
+        let siteData = {
+            teacherPass: "1111",
+            siteTitle: "منصة الأستاذ إسماعيل بن محمد",
+            profName: "الأستاذ / إسماعيل بن محمد",
+            profTitle: "معلم اللغة العربية للمرحلتين الإعدادية والثانوية الأزهرية",
+            profGrades: "الصفوف الدراسية: المرحلة الإعدادية والثانوية الأزهرية",
+            profBio: "طريقك للتميز في المواد العربية بالأزهر الشريف | من الفهم إلى الإتقان",
+            profImg: "https://via.placeholder.com/180",
+            
+            descSarf: "دراسة أبنية الكلمات وتصريفها لمعرفة الأصول والزيادة.",
+            descNahw: "ضبط أواخر الكلمات إعراباً وبناءً لفهم المعاني بدقة.",
+            descBalagha: "علم البيان والمعاني والبديع لتذوق جمال اللغة العربية.",
+            descAdab: "تاريخ الأدب العربي ونصوصه عبر العصور المختلفة.",
+
+            phones: ["01158081761"],
+            groups: [
+                { name: "جروب التلغرام الرسمي", link: "#" },
+                { name: "صفحة الفيسبوك", link: "#" }
+            ],
+            notes: [
+                { title: "مذكرة الصرف الكاملة", grade: "الصف الثالث الثانوي", img: "https://via.placeholder.com/200" }
+            ],
+            videos: []
+        };
+
+        let tempUploadedImg = "";
+        let tempNoteImg = "";
+        let tempVidUrl = "";
+        let selectedNoteTitleForOrder = "";
+
+        async function uploadFileToCloud(file, resourceType = "image") {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", UPLOAD_PRESET);
+
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${resourceType}/upload`, {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.error?.message || "فشل الرفع للسحابة");
+            }
+            return data.secure_url;
+        }
+
+        async function uploadProfileImageOnline(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            document.getElementById('profStatus').innerText = "جاري رفع الصورة أونلاين...";
+            try {
+                tempUploadedImg = await uploadFileToCloud(file, "image");
+                document.getElementById('profStatus').innerText = "تم رفع الصورة بنجاح! ✅ (اضغط حفظ الكل لضمان ثباتها)";
+            } catch(err) {
+                document.getElementById('profStatus').innerText = "فشل الرفع ❌";
+                alert(err.message);
+            }
+        }
+
+        async function uploadNoteImgOnline(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            document.getElementById('noteFileStatus').innerText = "جاري رفع الغلاف...";
+            try {
+                tempNoteImg = await uploadFileToCloud(file, "image");
+                document.getElementById('noteFileStatus').innerText = "تم الرفع بنجاح! ✅";
+            } catch(err) {
+                document.getElementById('noteFileStatus').innerText = "فشل الرفع ❌";
+                alert(err.message);
+            }
+        }
+
+        async function uploadVideoOnline(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            document.getElementById('vidFileStatus').innerText = "جاري رفع الفيديو للسيرفر...";
+            try {
+                tempVidUrl = await uploadFileToCloud(file, "video");
+                document.getElementById('vidFileStatus').innerText = "تم رفع الفيديو بنجاح! ✅";
+            } catch(err) {
+                document.getElementById('vidFileStatus').innerText = "فشل الرفع ❌";
+                alert(err.message);
+            }
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                try { siteData = JSON.parse(saved); } catch(e) {}
+            }
+            renderSite();
+            renderAdminLists();
+        }
+
+        function renderSite() {
+            document.getElementById('navLogoText').innerText = siteData.siteTitle;
+            document.getElementById('siteTitle').innerText = siteData.siteTitle;
+            document.getElementById('profName').innerText = siteData.profName;
+            document.getElementById('profTitle').innerText = siteData.profTitle;
+            document.getElementById('profGrades').innerHTML = `<i class="fas fa-graduation-cap"></i> ${siteData.profGrades}`;
+            document.getElementById('profBio').innerText = siteData.profBio;
+            document.getElementById('profImg').src = siteData.profImg;
+
+            let phonesHTML = "";
+            siteData.phones.forEach(phone => {
+                phonesHTML += `<a href="https://wa.me/2${phone}" target="_blank" class="social-pill" style="background:rgba(37,211,102,0.15); border-color:var(--whatsapp-color);"><i class="fab fa-whatsapp" style="color:var(--whatsapp-color);"></i> واتساب: ${phone}</a>`;
+            });
+            document.getElementById('phonesBar').innerHTML = phonesHTML;
+
+            let groupsHTML = "";
+            siteData.groups.forEach(g => {
+                groupsHTML += `<a href="${g.link}" target="_blank" class="glass-card" style="display:block; text-decoration:none; color:#fff; text-align:center; padding:0.9rem; border-top:3px solid var(--primary-accent);"><i class="fas fa-external-link-alt" style="color:var(--primary-accent);"></i> ${g.name}</a>`;
+            });
+            document.getElementById('groupsGrid').innerHTML = groupsHTML;
+
+            let subjectsHTML = `
+                <div class="glass-card" style="border-top:3px solid var(--gold-accent);">
+                    <h3 style="color:var(--gold-accent); margin-bottom:0.3rem;"><i class="fas fa-feather-alt"></i> الصرف</h3>
+                    <p style="font-size:0.9rem;">${siteData.descSarf}</p>
+                </div>
+                <div class="glass-card" style="border-top:3px solid var(--primary-accent);">
+                    <h3 style="color:var(--primary-accent); margin-bottom:0.3rem;"><i class="fas fa-book"></i> النحو</h3>
+                    <p style="font-size:0.9rem;">${siteData.descNahw}</p>
+                </div>
+                <div class="glass-card" style="border-top:3px solid #10b981;">
+                    <h3 style="color:#10b981; margin-bottom:0.3rem;"><i class="fas fa-comment-dots"></i> البلاغة</h3>
+                    <p style="font-size:0.9rem;">${siteData.descBalagha}</p>
+                </div>
+                <div class="glass-card" style="border-top:3px solid #8b5cf6;">
+                    <h3 style="color:#8b5cf6; margin-bottom:0.3rem;"><i class="fas fa-scroll"></i> الأدب والنصوص</h3>
+                    <p style="font-size:0.9rem;">${siteData.descAdab}</p>
+                </div>
+            `;
+            document.getElementById('subjectsGrid').innerHTML = subjectsHTML;
+
+            let notesHTML = "";
+            siteData.notes.forEach((n, idx) => {
+                notesHTML += `
+                    <div class="store-card">
+                        <div class="store-img-wrapper"><img src="${n.img}" class="store-card-img" alt="${n.title}"></div>
+                        <div class="store-card-body">
+                            <div>
+                                <span class="grade-badge">${n.grade}</span>
+                                <h3 style="font-size:0.95rem; margin-bottom:0.3rem; color:#fff;">${n.title}</h3>
+                            </div>
+                            <button class="buy-btn" onclick="openOrderModal('${n.title}')"><i class="fab fa-whatsapp"></i> اطلب نسختك الآن</button>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('notesGrid').innerHTML = notesHTML;
+
+            let vidsHTML = "";
+            siteData.videos.forEach(v => {
+                vidsHTML += `
+                    <div class="glass-card">
+                        <h3 style="font-size:0.95rem; margin-bottom:0.5rem; color:var(--primary-accent);">${v.title}</h3>
+                        <div class="video-box"><video controls src="${v.url}"></video></div>
+                    </div>
+                `;
+            });
+            document.getElementById('videosGrid').innerHTML = vidsHTML;
+        }
+
+        function renderAdminLists() {
+            document.getElementById('siteNameInput').value = siteData.siteTitle;
+            document.getElementById('profNameInput').value = siteData.profName;
+            document.getElementById('profTitleInput').value = siteData.profTitle;
+            document.getElementById('profGradesInput').value = siteData.profGrades;
+            document.getElementById('profBioInput').value = siteData.profBio;
+
+            document.getElementById('descSarf').value = siteData.descSarf;
+            document.getElementById('descNahw').value = siteData.descNahw;
+            document.getElementById('descBalagha').value = siteData.descBalagha;
+            document.getElementById('descAdab').value = siteData.descAdab;
+
+            let nList = "";
+            siteData.notes.forEach((n, i) => {
+                nList += `<div class="list-row"><span>${n.title} (${n.grade})</span><div><button class="btn-edit" onclick="editNote(${i})">تعديل</button><button class="btn-danger" onclick="deleteNote(${i})">حذف</button></div></div>`;
+            });
+            document.getElementById('notesListAdmin').innerHTML = nList;
+
+            let gList = "";
+            siteData.groups.forEach((g, i) => {
+                gList += `<div class="list-row"><span>${g.name}</span><div><button class="btn-edit" onclick="editGroup(${i})">تعديل</button><button class="btn-danger" onclick="deleteGroup(${i})">حذف</button></div></div>`;
+            });
+            document.getElementById('groupsListAdmin').innerHTML = gList;
+
+            let vList = "";
+            siteData.videos.forEach((v, i) => {
+                vList += `<div class="list-row"><span>${v.title}</span><button class="btn-danger" onclick="deleteVideo(${i})">حذف</button></div>`;
+            });
+            document.getElementById('videosListAdmin').innerHTML = vList;
+
+            let pList = "";
+            siteData.phones.forEach((p, i) => {
+                pList += `<div class="list-row"><span>${p}</span><button class="btn-danger" onclick="deletePhone(${i})">حذف</button></div>`;
+            });
+            document.getElementById('phonesListAdmin').innerHTML = pList;
+        }
+
+        function saveAllSiteData() {
+            siteData.siteTitle = document.getElementById('siteNameInput').value;
+            siteData.profName = document.getElementById('profNameInput').value;
+            siteData.profTitle = document.getElementById('profTitleInput').value;
+            siteData.profGrades = document.getElementById('profGradesInput').value;
+            siteData.profBio = document.getElementById('profBioInput').value;
+
+            if(tempUploadedImg) {
+                siteData.profImg = tempUploadedImg;
+                tempUploadedImg = "";
+            }
+
+            siteData.descSarf = document.getElementById('descSarf').value;
+            siteData.descNahw = document.getElementById('descNahw').value;
+            siteData.descBalagha = document.getElementById('descBalagha').value;
+            siteData.descAdab = document.getElementById('descAdab').value;
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderSite();
+            renderAdminLists();
+            alert("تم حفظ ونشر جميع التعديلات والصور بنجاح دائم أونلاين! ✅");
+            goToMainSite();
+        }
+
+        function addOrUpdateNote() {
+            let title = document.getElementById('noteTitleIn').value;
+            let grade = document.getElementById('noteGradeIn').value;
+            let idx = parseInt(document.getElementById('editingNoteIndex').value);
+
+            if(!title) { alert("أدخل اسم المذكرة"); return; }
+            let img = tempNoteImg || "https://via.placeholder.com/200";
+
+            if(idx === -1) {
+                siteData.notes.push({ title, grade, img });
+            } else {
+                siteData.notes[idx].title = title;
+                siteData.notes[idx].grade = grade;
+                if(tempNoteImg) siteData.notes[idx].img = tempNoteImg;
+                document.getElementById('editingNoteIndex').value = -1;
+                document.getElementById('saveNoteBtn').innerText = "حفظ المذكرة للقائمة 🚀";
+            }
+            tempNoteImg = "";
+            document.getElementById('noteTitleIn').value = "";
+            document.getElementById('noteGradeIn').value = "";
+            document.getElementById('noteFileStatus').innerText = "";
+            
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function editNote(i) {
+            let n = siteData.notes[i];
+            document.getElementById('noteTitleIn').value = n.title;
+            document.getElementById('noteGradeIn').value = n.grade;
+            document.getElementById('editingNoteIndex').value = i;
+            document.getElementById('saveNoteBtn').innerText = "تحديث المذكرة 🔄";
+        }
+
+        function deleteNote(i) {
+            siteData.notes.splice(i, 1);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function addOrUpdateGroup() {
+            let name = document.getElementById('groupNameIn').value;
+            let link = document.getElementById('groupLinkIn').value;
+            let idx = parseInt(document.getElementById('editingGroupIndex').value);
+
+            if(!name || !link) { alert("أدخل البيانات كاملة"); return; }
+            if(idx === -1) {
+                siteData.groups.push({ name, link });
+            } else {
+                siteData.groups[idx] = { name, link };
+                document.getElementById('editingGroupIndex').value = -1;
+                document.getElementById('saveGroupBtn').innerText = "حفظ اللينك 🔗";
+            }
+            document.getElementById('groupNameIn').value = "";
+            document.getElementById('groupLinkIn').value = "";
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function editGroup(i) {
+            let g = siteData.groups[i];
+            document.getElementById('groupNameIn').value = g.name;
+            document.getElementById('groupLinkIn').value = g.link;
+            document.getElementById('editingGroupIndex').value = i;
+            document.getElementById('saveGroupBtn').innerText = "تحديث اللينك 🔄";
+        }
+
+        function deleteGroup(i) {
+            siteData.groups.splice(i, 1);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function addOrUpdateVideo() {
+            let title = document.getElementById('vidTitleIn').value;
+            if(!title || !tempVidUrl) { alert("أدخل العنوان وقم برفع الفيديو أولاً"); return; }
+            siteData.videos.push({ title, url: tempVidUrl });
+            tempVidUrl = "";
+            document.getElementById('vidTitleIn').value = "";
+            document.getElementById('vidFileStatus').innerText = "";
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function deleteVideo(i) {
+            siteData.videos.splice(i, 1);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function addPhone() {
+            let p = document.getElementById('phoneIn').value;
+            if(!p) return;
+            siteData.phones.push(p);
+            document.getElementById('phoneIn').value = "";
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function deletePhone(i) {
+            siteData.phones.splice(i, 1);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            renderAdminLists();
+            renderSite();
+        }
+
+        function updateTeacherPassword() {
+            let p = document.getElementById('newTeacherPass').value;
+            if(!p) { alert("أدخل كلمة السر الجديدة"); return; }
+            siteData.teacherPass = p;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(siteData));
+            alert("تم تحديث كلمة السر بنجاح 🔑");
+        }
+
+        function resetSiteData() {
+            if(confirm("هل أنت متأكد من استرجاع الافتراضيات؟")) {
+                localStorage.removeItem(STORAGE_KEY);
+                location.reload();
+            }
+        }
+
+        function openLoginModal() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLoginModal() { document.getElementById('loginModal').style.display = 'none'; }
+
+        function verifyAdminLogin() {
+            let pass = document.getElementById('adminPassInput').value;
+            if(pass === siteData.teacherPass) {
+                closeLoginModal();
+                document.getElementById('mainSitePage').style.display = 'none';
+                document.getElementById('adminPage').style.display = 'block';
+                document.getElementById('adminPassInput').value = "";
+            } else {
+                alert("كلمة السر غير صحيحة!");
+            }
+        }
+
+        function goToMainSite() {
+            document.getElementById('adminPage').style.display = 'none';
+            document.getElementById('mainSitePage').style.display = 'block';
+        }
+
+        // Order Modal Handling & Whatsapp Redirect
+        function openOrderModal(noteTitle) {
+            selectedNoteTitleForOrder = noteTitle;
+            document.getElementById('modalNoteTitleDisplay').innerText = `طلب مذكرة: ${noteTitle}`;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function sendOrderToWhatsapp() {
+            let role = document.getElementById('orderRole').value;
+            let name = document.getElementById('orderName').value;
+            let city = document.getElementById('orderCity').value;
+            let grade = document.getElementById('orderGrade').value;
+            let type = document.getElementById('orderType').value;
+
+            if(!name || !city || !grade) {
+                alert("يرجى إكمال بيانات الاسم، المحافظة، والصف الدراسي.");
+                return;
+            }
+
+            let phoneNum = siteData.phones[0] || '01158081761';
+            
+            let message = `كل الشكر والتقدير والاحترام لحضرتك يا أستاذنا الفاضل 🙏🌹\n\n` +
+                          `أرغب في طلب نسخة من المذكرة التالية:\n` +
+                          `📚 *${selectedNoteTitleForOrder}*\n\n` +
+                          `بياناتي:\n` +
+                          `- الصفة: ${role}\n` +
+                          `- الاسم: ${name}\n` +
+                          `- المحافظة: ${city}\n` +
+                          `- الصف الدراسي: ${grade}\n` +
+                          `- النوع: ${type}`;
+
+            let encodedUrl = `https://wa.me/2${phoneNum}?text=${encodeURIComponent(message)}`;
+            window.open(encodedUrl, '_blank');
+            closeOrderModal();
+        }
+
+        window.onload = loadSavedData;
+    </script>
+</body>
+</html>
