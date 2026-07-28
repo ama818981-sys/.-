@@ -26,6 +26,49 @@
         body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding-bottom: 4rem; overflow-x: hidden; }
 
         .container { max-width: 1150px; margin: 0 auto; padding: 0 0.8rem; }
+        async function uploadFileToCloud(file, resourceType = "image") {
+    // 1. تحويل الملف إلى Base64 ليرسله جيت هب
+    const base64Content = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = error => reject(error);
+    });
+
+    // 2. اسم فريد للملف حتى لا يحدث تكرار
+    const fileName = "uploads/" + Date.now() + "_" + file.name;
+
+    // 3. بيانات حسابك على جيت هب ومنصة الأستاذ إسماعيل بن محمد
+    const GITHUB_USERNAME = "Ama818981-sys"; 
+    const REPO_NAME = "esmail-platform"; // لو اسم المستودع مختلف عندك على جيت هب، غير الكلمة دي لاسم المستودع بالظبط
+    const BRANCH = "main"; // أو master حسب الفرع الأساسي لموقعك
+    const TOKEN = "Ghp_FaJ8DmaTIVp1Y5wf3jRV264hLnN4kS1n9hcd";
+
+    const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${fileName}`;
+
+    // 4. إرسال الصورة لترتفع داخل مجلد في مستودعك تلقائياً
+    const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+            "Authorization": `token ${TOKEN}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            message: "Upload file via platform dashboard",
+            content: base64Content,
+            branch: BRANCH
+        })
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+        throw new Error(data.message || "فشل الرفع إلى جيت هب");
+    }
+
+    // 5. إرجاع الرابط المباشر والثابت للصورة ليعمل على أي هاتف فوراً
+    return `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/${BRANCH}/${fileName}`;
+}
+
 
         .section-divider {
             height: 1px;
